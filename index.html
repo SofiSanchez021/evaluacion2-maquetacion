@@ -3,48 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- TODO (issue #2): cambia el título por el nombre de tu proyecto -->
-  <title>Plantilla Evaluación 2</title>
+  <title>Ruta Patrimonio</title>
 
-  <!-- Bootstrap 5.3 por CDN. Tu hoja de estilos va DESPUÉS para poder personalizarlo. -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-  <!-- TODO (issue #1): aquí va el <link> de Google Fonts con las dos fuentes de tu Manual de marca -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Source+Serif+4:wght@400;600;700&display=swap">
   <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
   <a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
 
   <header>
-    <nav class="navbar navbar-expand-lg" aria-label="Navegacion principal">
+    <nav class="navbar navbar-expand-lg" aria-label="Navegación principal">
       <div class="container">
         <a class="navbar-brand fw-bold" href="#">Ruta Patrimonio</a>
         <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#menuPrincipal"
-        aria-controls="menuPrincipal"
-        aria-expanded="false"
-        aria-label="Abrir menu de Navegacion">
-      
-        <span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse" id="menuPrincipal">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="#seccion-catalogo">Catalogo</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#acerca">Nosotros</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contacto">Contacto</a>
-          </li>
-        </ul>
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#menuPrincipal"
+          aria-controls="menuPrincipal"
+          aria-expanded="false"
+          aria-label="Abrir menú de navegación"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="#seccion-catalogo">Catálogo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#acerca">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contacto">Contacto</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
-</header>
+    </nav>
+  </header>
 
+  <main id="contenido">
+    <section class="hero-marca py-5" aria-labelledby="titulo-principal">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-md-7">
+            <h1 id="titulo-principal" class="display-5 fw-bold mb-3">Historia viva del Eje Cafetero</h1>
+            <p class="lead mb-4">Historia viva del Eje Cafetero</p>
+            <a href="#seccion-catalogo" class="btn btn-marca btn-lg">Ver lugares</a>
+          </div>
+          <div class="col-md-5 text-center">
+            <img
+              src="img/hero-patrimonio.svg"
+              class="img-fluid rounded shadow-sm"
+              alt="Ilustración de arquitectura tradicional y montañas del Eje Cafetero"
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="seccion-catalogo" class="py-5" aria-labelledby="titulo-catalogo">
+      <div class="container">
+        <h2 id="titulo-catalogo" class="mb-4">Catálogo patrimonial</h2>
+
+        <div class="row g-3 align-items-end mb-3">
+          <div class="col-12 col-lg-6">
+            <p class="form-label mb-2">Categorías</p>
+            <div class="btn-group flex-wrap" role="group" aria-label="Filtrar lugares por categoría">
+              <button type="button" class="btn btn-outline-primary" data-categoria="todas" aria-pressed="true">Todas</button>
+              <button type="button" class="btn btn-outline-primary" data-categoria="museo" aria-pressed="false">Museo</button>
+              <button type="button" class="btn btn-outline-primary" data-categoria="parque" aria-pressed="false">Parque</button>
+              <button type="button" class="btn btn-outline-primary" data-categoria="monumento" aria-pressed="false">Monumento</button>
+              <button type="button" class="btn btn-outline-primary" data-categoria="cultural" aria-pressed="false">Cultural</button>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-3">
+            <label for="buscador" class="form-label">Buscar lugar</label>
+            <input type="search" id="buscador" class="form-control" placeholder="Nombre o descripción...">
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-3">
+            <label for="orden" class="form-label">Ordenar por</label>
+            <select id="orden" class="form-select">
+              <option value="nombre-asc">Nombre (A - Z)</option>
+              <option value="valor-asc">Entrada: menor a mayor</option>
+              <option value="valor-desc">Entrada: mayor a menor</option>
+            </select>
+          </div>
+        </div>
+
+        <p id="contador" class="mb-4" aria-live="polite"></p>
+
+        <div id="catalogo" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"></div>
+      </div>
+    </section>
 
     <section id="acerca" class="py-5" aria-labelledby="titulo-acerca">
       <div class="container">
@@ -57,8 +112,7 @@
           </div>
           <div class="col-md-5 text-center">
             <img
-  
-              src="img/ruta-patrimonio.jpg" class="img-fluid rounded"
+              src="img/acerca-patrimonio.svg"
               class="img-fluid rounded shadow-sm"
               alt="Representación de museo y patrimonio cultural del Eje Cafetero"
             >
@@ -67,6 +121,7 @@
       </div>
     </section>
   </main>
+
   <footer id="contacto" class="pie-pagina py-4 mt-4">
     <div class="container">
       <div class="row g-3">
@@ -76,40 +131,14 @@
           <p class="mb-0">Horario: Lunes a viernes de 8:00 a. m. a 5:00 p. m.</p>
         </div>
         <div class="col-md-6 text-md-end">
-          <p class="mb-1">Teléfono: 3113517681</p>
+          <p class="mb-1">Teléfono: 606 334 9191</p>
           <p class="mb-0">Correo: <a href="mailto:info@rutapatrimonio.co">info@rutapatrimonio.co</a></p>
         </div>
       </div>
     </div>
   </footer>
 
-  <!--
-    TODO (issue #2): estructura de la página. Consulta ISSUES.md, la guía y la
-    página de tu empresa en el Manual de marca: ahí dice cómo va la navbar,
-    el hero, cuántas columnas tiene el catálogo y de qué lado va la imagen
-    de "acerca de".
-
-    1. Enlace "Saltar al contenido" que lleve a #contenido.
-    2. header con la navbar de Bootstrap que se pliega en celular
-       (navbar-expand-lg, navbar-toggler accesible, div.collapse).
-    3. main id="contenido" con:
-       - Una sección de presentación con el ÚNICO h1 de la página.
-       - Sección del catálogo (section + aria-labelledby + h2) con:
-           * Grupo de filtros: div.btn-group role="group" aria-label="..."
-             con un botón "todas" y uno por categoría:
-             <button type="button" class="btn btn-outline-primary" data-categoria="..." aria-pressed="false">
-           * label + input type="search" id="buscador"
-           * label + select id="orden" con las opciones
-             nombre-asc, valor-asc y valor-desc
-           * p id="contador" aria-live="polite"
-           * div id="catalogo" class="row ..." (aquí JS pinta las tarjetas)
-       - section id="acerca" (aria-labelledby + h2) con una grilla de 2 columnas.
-    4. footer.
-  -->
-
-  <!-- Bootstrap JS (necesario para que la navbar se pliegue) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- El orden importa: primero los datos, después la lógica -->
   <script src="js/datos.js"></script>
   <script src="js/app.js"></script>
 </body>
